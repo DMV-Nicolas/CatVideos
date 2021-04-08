@@ -1,0 +1,297 @@
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: #dbdbdb;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.3em;
+    transition: .1s color linear;
+}
+
+a:hover {
+    color: #000000;
+}
+
+li {
+    list-style: none;
+}
+
+.divisor {
+    display: block;
+    height: 50px;
+    opacity: 0%;
+}
+
+
+/*Barra de navegacion*/
+
+.navbar {
+    background-color: #4772ff;
+    width: 100%;
+    height: 80px;
+}
+
+.navbar__div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto;
+    width: 90%;
+    height: 100%;
+}
+
+.navbar__ul1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar__ul2 {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+/*Formularios*/
+
+.catForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #c9c9c9;
+    border-radius: 5px;
+    padding: 3%;
+    width: 60%;
+    margin: auto;
+}
+
+.catForm div {
+    padding: 3% 0;
+}
+
+.catForm__title {
+    width: 100%;
+    margin: auto;
+    background: #dbdbdb;
+    border-radius: 5px;
+    text-align: center;
+    color: #000000;
+}
+
+.catForm__input input {
+    background: #dbdbdb;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 1%;
+}
+
+.catForm__input input:focus {
+    box-shadow: 0px 0px 5px 0px #4772ff;
+}
+
+.catForm__button {
+    margin: auto;
+    text-align: center;
+}
+
+.catForm__button button {
+    width: 15em;
+    padding: 3%;
+    cursor: pointer;
+}
+
+
+/*Videos de "gatos"*/
+
+.listCatVideos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 80%;
+    margin: auto;
+}
+
+.catVideo {
+    position: relative;
+    margin: 4% 4%;
+    border: 2px solid #ffffff;
+    transition: .3s filter linear;
+}
+
+.catVideo:hover {
+    filter: brightness(70%);
+}
+
+.catVideo div h2 {
+    position: absolute;
+    text-align: center;
+    background-color: #4772ff;
+    color: #ffffff;
+    font-size: 1.1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    opacity: 80%;
+    width: 100%;
+    bottom: 1%;
+}
+
+
+/*Ver Video de "gatos"*/
+
+.onlyCatVideo {
+    position: relative;
+    width: 940px;
+    height: 600px;
+    margin: auto;
+}
+
+.onlyCatVideo div {
+    position: absolute;
+    background-color: #e6e6e6;
+    margin: auto;
+    text-align: center;
+    top: 5%;
+    left: 0;
+    right: 0;
+}
+
+.onlyCatVideo iframe {
+    position: absolute;
+    margin: auto;
+    top: 10%;
+    left: 0;
+    right: 0;
+}
+
+
+/*Footer*/
+
+footer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #e6e6e6;
+}
+
+footer a {
+    color: #000000;
+    font-size: 1em;
+}
+
+
+/*Window*/
+
+.overlay {
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    visibility: hidden;
+}
+
+.overlay.active {
+    visibility: visible;
+}
+
+.popup {
+    background-color: #4772ff;
+    color: #ffffff;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    padding: 20px;
+    width: 600px;
+    transition: .1s ease all;
+    transform: scale(0.7);
+    opacity: 0;
+}
+
+.popup .btn-cerrar-popup {
+    font-size: 16px;
+    line-height: 16px;
+    display: block;
+    text-align: right;
+    transition: .1s ease all;
+    color: #000000;
+}
+
+.popup .btn-cerrar-popup:hover {
+    color: #ffffff;
+}
+
+.popup h3 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0;
+}
+
+.popup h4 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    opacity: 0;
+}
+
+.popup.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.popup.active h3 {
+    animation: entradaTitulo .8s ease .5s forwards;
+}
+
+.popup.active h4 {
+    animation: entradaSubtitulo .8s ease .5s forwards;
+}
+
+@keyframes entradaTitulo {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes entradaSubtitulo {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+.warning {
+    color: yellow;
+}
