@@ -1,0 +1,18 @@
+{%extends "layaut.html"%}{%block content%}
+<form action="{{url_for('addVideo')}}" method="POST" class="catForm">
+    <div class="catForm__title">
+        <h2>Subir video</h2>
+    </div>
+    <div class="catForm__input">
+        <h3>Nombre del video</h3>
+        <input type="text" placeholder="Nombre del video" name="videoName">
+    </div>
+    <div class="catForm__input">
+        <h3>Url del video</h3>
+        <input type="text" placeholder="Url del video (youtube)" name="videoUrl">
+    </div>
+    <div class="catForm__button">
+        <button type="submit">Subir</button>
+    </div>
+</form>
+{%endblock%}

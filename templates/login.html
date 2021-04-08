@@ -1,0 +1,18 @@
+{%extends "layaut.html"%}{%block content%}
+<form action="{{url_for('login')}}" method="POST" class="catForm">
+    <div class="catForm__title">
+        <h2>Iniciar Sesion</h2>
+    </div>
+    <div class="catForm__input">
+        <h3>Nombre de usuario</h3>
+        <input type="text" placeholder="Nombre de usuario" name="username">
+    </div>
+    <div class="catForm__input">
+        <h3>Contraseña</h3>
+        <input type="password" placeholder="Contraseña" name="password">
+    </div>
+    <div class="catForm__button">
+        <button type="submit">Ingresar</button>
+    </div>
+</form>
+{%endblock%}

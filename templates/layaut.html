@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a1c45a8756.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+    <title>Cats Proyect</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar__div">
+            <ul class="navbar__ul1">
+                <li>
+                    <a href="{{url_for('index')}}"><img src="{{url_for('static', filename='img/favicon.ico')}}" alt="catVideosLogo"></a>
+                </li>
+
+                {%if g.user%}
+                <li>
+                    <a href="{{url_for('addVideo')}}">Añadir video</a>
+                </li>
+                {%endif%}
+                <li></li>
+            </ul>
+            <ul class="navbar__ul2">
+                {%if g.user%}
+                <li>
+                    <div>
+                        <a href="#" id="btn-abrir-popup">{{g.user}} <i class="fas fa-cat"></i></a>
+                    </div>
+                </li>
+                <li></li>
+                {%else%}
+                <li>
+                    <a href="{{url_for('signup')}}">Registrarme</a>
+                </li>
+                <li>
+                    <a href="{{url_for('login')}}">Ingresar</a>
+                </li>
+                <li></li>
+                <li></li>
+                {%endif%}
+            </ul>
+        </div>
+    </nav>
+    {%with messages=get_flashed_messages(with_categories=True)%} {%if messages%}
+    <ul>
+        {%for category, message in messages%}
+        <li>
+            <div class="{{category}}" role="alert">
+                <p>{{message}}</p>
+            </div>
+        </li>
+        {%endfor%}
+    </ul>
+    {%endif%} {%endwith%}
+    <div class="divisor"></div>
+    {%block content%} {%endblock%}
+    <div class="divisor"></div>
+    <footer>
+        <p>Desarrollado por Nicolas David Moreno Villanueva</p>
+        <p>Codigo abierto <a href="" id="link" target="_blank">(Repositorio de Github)</a></p>
+    </footer>
+    <div>
+        <div class="overlay" id="overlay">
+            <div class="popup" id="popup">
+                <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+                <h3>{{g.user}} <i class="fas fa-cat"></i></h3>
+                <h4>Videos subidos: {{userNumVideos}}</h4>
+                <a href="{{url_for('logout')}}">Cerrar Sesion</a>
+            </div>
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+
+</html>

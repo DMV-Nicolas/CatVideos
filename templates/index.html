@@ -1,0 +1,13 @@
+{%extends "layaut.html"%}{%block content%}
+<ul class="listCatVideos">
+    {%for video in videos%}
+    <li class="catVideo">
+        <div>
+            <a href="{{url_for('watchVideo',videoId=video.id)}}">
+                <img src="{{videoUrlImg[loop.index-1]}}" alt="catVideo-{{loop.index-1}}">
+            </a>
+            <h2>{{video.name}}</h2>
+        </div>
+    </li>{%endfor%}
+</ul>
+{%endblock%}
